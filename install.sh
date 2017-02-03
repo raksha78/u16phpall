@@ -8,7 +8,8 @@ apt-get clean
 
 # Install dependencies
 echo "=========== Installing dependencies ============"
-apt-get purge `dpkg -l | grep php| awk '{print $2}' |tr "\n" " "`
+#apt-get purge `dpkg -l | grep php| awk '{print $2}' |tr "\n" " "`
+apt-get install php7.0-dev php7.1-dev
 add-apt-repository -y ppa:ondrej/php
 
 apt-get update
@@ -48,18 +49,6 @@ ln -s /usr/include/tidy/tidybuffio.h /usr/include/tidy/buffio.h
 ln -s /usr/include/tidy/tidyplatform.h /usr/include/tidy/platform.h
 
 
-#install gosu
-echo "================= Installing GoSu ==================="
-/u16phpall/install_gosu.sh
-
-#create a separate user for running php compose wihtout root
-#needs gosu installed in the u16all base image
-useradd phpuser
-chown -R phpuser /u16phpall/version
-chown phpuser /u16phpall/_install.sh
-mkdir /home/phpuser
-chown -R phpuser /home/phpuser
-
 # Install php-build
 echo "============ Installing php-build =============="
 git clone git://github.com/php-build/php-build.git $HOME/php-build
@@ -70,11 +59,27 @@ rm -rf $HOME/php-build
 git clone https://github.com/FriendsOfPHP/pickle.git /tmp/pickle
 ln -s /tmp/pickle/bin/pickle /usr/bin/
 
-#let phpuser own the pickle
-chown -R phpuser /tmp/pickle
-#run remaining scripts by droppping root privileges as a phpuser
-echo "================= Installing phpversions as phpuser ==================="
-gosu phpuser /u16phpall/_install.sh
+# Install phpenv
+git clone git://github.com/CHH/phpenv.git $HOME/phpenv
+$HOME/phpenv/bin/phpenv-install.sh
+echo 'export PATH=$PHPENV_PATH/.phpenv/bin:$PATH' >> $HOME/.bashrc
+echo 'eval "$(phpenv init -)"' >> $HOME/.bashrc
+rm -rf $HOME/phpenv
+
+# Activate phpenv
+export PATH=$HOME/.phpenv/bin:$PATH
+#echo "PATH=$HOME/.phpenv/bin:$PATH"
+eval "$(phpenv init -)"
+
+cd /
+
+/u16phpall/version/5_4.sh
+/u16phpall/version/7_0.sh
+/u16phpall/version/7_1.sh
+#for file in /u16phpall/version/*.sh;
+#do
+#  . $file
+#done
 
 # Cleaning package lists
 echo "================= Cleaning package lists ==================="

@@ -10,8 +10,6 @@ echo "============ Setting phpenv to 5.6 ============"
 phpenv rehash
 phpenv global 5.6
 
-mkdir -p $HOME/.phpenv/versions/5.6/bin
-cd /home/phpuser
 # Install phpunit
 echo "============ Installing PHPUnit ============="
 wget https://phar.phpunit.de/phpunit.phar

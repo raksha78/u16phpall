@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash  
 
 # Build PHP 5.4.39
 echo "============ Building PHP 5.4 =============="
@@ -9,7 +9,7 @@ echo "============ Setting phpenv to 5.4 ============"
 phpenv rehash
 phpenv global 5.4
 
-cd /home/phpuser
+mkdir -p $HOME/.phpenv/versions/5.4/bin
 
 # Install phpunit
 echo "============ Installing PHPUnit ============="
@@ -20,6 +20,8 @@ mv phpunit-old.phar $HOME/.phpenv/versions/5.4/bin/phpunit
 # Install Composer
 echo "============ Installing Composer ============"
 curl -s http://getcomposer.org/installer | php
+#install old composer version so that it can be run as root
+wget https://getcomposer.org/download/1.1.3/composer.phar 
 chmod +x composer.phar
 mv composer.phar $HOME/.phpenv/versions/5.4/bin/composer
 

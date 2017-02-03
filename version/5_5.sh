@@ -7,8 +7,6 @@ echo "============ Setting phpenv to 5.5 ============"
 phpenv rehash
 phpenv global 5.5
 
-cd /home/phpuser
-
 # Install phpunit
 echo "============ Installing PHPUnit ============="
 wget https://phar.phpunit.de/phpunit-old.phar
