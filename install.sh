@@ -9,6 +9,7 @@ apt-get clean
 # Install dependencies
 echo "=========== Installing dependencies ============"
 #apt-get purge `dpkg -l | grep php| awk '{print $2}' |tr "\n" " "`
+apt-get update
 apt-get install php7.0-dev php7.1-dev
 add-apt-repository -y ppa:ondrej/php
 
