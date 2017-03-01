@@ -1,4 +1,4 @@
-#!/bin/bash  
+#!/bin/bash -e
 
 # Build PHP 5.4.39
 echo "============ Building PHP 5.4 =============="

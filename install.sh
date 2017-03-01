@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash -e
 
 apt-get clean
 mv /var/lib/apt/lists/* /tmp
@@ -39,11 +39,10 @@ apt-get install -y libxml2-dev     \
                 libpspell-dev   \
                 libsnmp-dev     \
                 libxslt1-dev    \
-                libmcrypt-dev
-                #libt1-dev       \
-		php5.6-dev
+                libmcrypt-dev   \
+                php5.6-dev
 
-# fixes for ubuntu 16.04. create soft links as header files have been 
+# fixes for ubuntu 16.04. create soft links as header files have been
 # renamed
 ln -s /usr/include/tidy/tidybuffio.h /usr/include/tidy/buffio.h
 ln -s /usr/include/tidy/tidyplatform.h /usr/include/tidy/platform.h
