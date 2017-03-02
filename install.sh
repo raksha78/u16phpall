@@ -68,18 +68,15 @@ export PATH=$HOME/.phpenv/bin:$PATH
 #echo "PATH=$HOME/.phpenv/bin:$PATH"
 eval "$(phpenv init -)"
 
-cd /
-
-/u16phpall/version/5_4.sh
-/u16phpall/version/7_0.sh
-/u16phpall/version/7_1.sh
-#for file in /u16phpall/version/*.sh;
-#do
-#  . $file
-#done
+for file in /u16phpall/version/*.sh;
+do
+  . $file
+done
 
 # Cleaning package lists
 echo "================= Cleaning package lists ==================="
 apt-get clean
 apt-get autoclean
 apt-get autoremove
+
+cd /
