@@ -9,13 +9,11 @@ apt-get clean
 # Install dependencies
 echo "=========== Installing dependencies ============"
 #apt-get purge `dpkg -l | grep php| awk '{print $2}' |tr "\n" " "`
-apt-get update
-apt-get install php7.0-dev php7.1-dev
 add-apt-repository -y ppa:ondrej/php
 
 apt-get update
-apt-get install php5.6
-apt-get install php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml
+apt-get install php5.6-dev php7.0-dev php7.1-dev
+apt-get install php5.6 php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-xml
 
 apt-get install -y git wget cmake libmcrypt-dev libreadline-dev libzmq-dev
 apt-get install -y libxml2-dev     \
@@ -40,8 +38,7 @@ apt-get install -y libxml2-dev     \
                 libpspell-dev   \
                 libsnmp-dev     \
                 libxslt1-dev    \
-                libmcrypt-dev   \
-                php5.6-dev
+                libmcrypt-dev
 
 # fixes for ubuntu 16.04. create soft links as header files have been
 # renamed
