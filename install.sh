@@ -38,7 +38,8 @@ apt-get install -y libxml2-dev     \
                 libpspell-dev   \
                 libsnmp-dev     \
                 libxslt1-dev    \
-                libmcrypt-dev
+                libmcrypt-dev   \
+                bzip2
 
 # fixes for ubuntu 16.04. create soft links as header files have been
 # renamed
