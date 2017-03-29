@@ -31,7 +31,6 @@ apt-get install -y libxml2-dev     \
                 libfreetype6-dev        \
                 libgd2-xpm-dev  \
                 libgmp-dev      \
-                libsasl2-dev    \
                 libmhash-dev    \
                 unixodbc-dev    \
                 freetds-dev     \
@@ -60,7 +59,7 @@ ln -s /tmp/pickle/bin/pickle /usr/bin/
 # Install phpenv
 git clone git://github.com/CHH/phpenv.git $HOME/phpenv
 $HOME/phpenv/bin/phpenv-install.sh
-echo 'export PATH=$PHPENV_PATH/.phpenv/bin:$PATH' >> $HOME/.bashrc
+echo 'export PATH=$HOME/.phpenv/bin:$PATH' >> $HOME/.bashrc
 echo 'eval "$(phpenv init -)"' >> $HOME/.bashrc
 rm -rf $HOME/phpenv
 
@@ -68,6 +67,21 @@ rm -rf $HOME/phpenv
 export PATH=$HOME/.phpenv/bin:$PATH
 #echo "PATH=$HOME/.phpenv/bin:$PATH"
 eval "$(phpenv init -)"
+
+# Install librabbitmq
+echo "============ Installing librabbitmq ============"
+cd /tmp && wget -nv https://github.com/alanxz/rabbitmq-c/releases/download/v0.7.1/rabbitmq-c-0.7.1.tar.gz
+tar xzf rabbitmq-c-0.7.1.tar.gz
+mkdir build && cd build
+cmake /tmp/rabbitmq-c-0.7.1
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local /tmp/rabbitmq-c-0.7.1
+cmake --build . --target install
+cd /tmp/rabbitmq-c-0.7.1
+autoreconf -i
+./configure
+make
+make install
+cd /
 
 for file in /u16phpall/version/*.sh;
 do
