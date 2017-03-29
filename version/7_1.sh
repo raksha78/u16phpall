@@ -27,7 +27,6 @@ $HOME/.phpenv/versions/7.1/bin/composer install
 
 # Install php extensions
 echo "=========== Installing PHP extensions =============="
-printf '\n' | bin/pickle install memcache
 printf '\n' | bin/pickle install memcached
 printf '\n' | bin/pickle install mongo
 printf '\n' | bin/pickle install amqp-1.6.0
