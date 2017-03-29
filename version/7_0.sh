@@ -32,4 +32,8 @@ printf '\n' | bin/pickle install amqp-1.6.0
 printf '\n' | bin/pickle install zmq-beta
 printf '\n' | bin/pickle install redis
 
+echo "--with-openssl-dir=yes" >> /tmp/pickle-mongodb-opts
+printf '\n' | bin/pickle install --with-configure-options=/tmp/pickle-mongodb-opts mongodb
+rm /tmp/pickle-mongodb-opts
+
 cd /
