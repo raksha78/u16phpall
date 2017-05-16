@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+locale-gen en_US.UTF-8
+export LANG=en_US.UTF-8
+
 apt-get clean
 mv /var/lib/apt/lists/* /tmp
 mkdir -p /var/lib/apt/lists/partial
