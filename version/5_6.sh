@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-#Build PHP 5.6.7
+#Build PHP 5.6.30
 echo "============ Building PHP 5.6.30 =============="
 PHP_BUILD_CONFIGURE_OPTS="--with-bz2 --enable-intl" php-build -i development 5.6.30 $HOME/.phpenv/versions/5.6
 

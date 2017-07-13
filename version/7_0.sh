@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-#Build PHP 7.0.1
+#Build PHP 7.0.20
 echo "============ Building PHP 7.0.20 =============="
 PHP_BUILD_CONFIGURE_OPTS="--with-bz2 --enable-intl" php-build -i development 7.0.20 $HOME/.phpenv/versions/7.0
 
